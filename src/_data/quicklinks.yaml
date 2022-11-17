@@ -1,14 +1,14 @@
 ---
 links:
-  - title: Netlify CMS
-    url: "https://www.netlifycms.org/"
-    desc: Open source content management for your Git workflow
-  - title: Eleventy
-    url: "https://www.11ty.dev/"
-    desc: Eleventy is a simpler static site generator.
-  - title: Alpine.js
-    url: "https://github.com/alpinejs/alpine"
-    desc: A minimal framework for composing JavaScript behavior in your markup.
-  - title: Tailwind CSS
-    url: "https://tailwindcss.com/"
-    desc: A utility-first CSS framework for rapidly building custom designs.
+  - title: Neva
+    url: "https://neva.wieland.lu/"
+    desc: Meine liebe Schwester
+  - title: kinderkultur.ch
+    url: "https://kinderkultur.ch"
+    desc: Viva la Mamma
+  - title: Petruschka.ch
+    url: "https://petruschka.ch"
+    desc: Viva la Nonna
+  - title: Suva.ch
+    url: "https://Suva.ch"
+    desc: Il Papa
