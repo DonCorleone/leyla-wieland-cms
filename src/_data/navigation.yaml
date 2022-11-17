@@ -1,10 +1,9 @@
----
 items:
-  - text: Menu One
+  - text: Menu Neva
     url: "#"
-  - text: Menu Two
+  - text: Menu Leyla
     url: "#"
-  - text: Menu Three
+  - text: Menu Lini
     url: "#"
   - text: Blog
-    url: "/blog"
+    url: /blog
