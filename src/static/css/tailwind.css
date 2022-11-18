@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 /*Your Custom CSS Goes here*/
+body {
+  @apply bg-gradient-to-r from-teal-400 via-rose-700 to-pink-500;
+}
 
 h1 {
   @apply text-4xl tracking-tighter mb-3 text-center lg:text-7xl;
