@@ -1,14 +1,13 @@
----
 links:
-  - title: Neva
-    url: "https://neva.wieland.lu/"
-    desc: Meine liebe Schwester
+  - title: BLOG
+    url: https://leyla.wieland.click/blog/
+    desc: The Blog.
   - title: kinderkultur.ch
-    url: "https://kinderkultur.ch"
+    url: https://kinderkultur.ch
     desc: Viva la Mamma
   - title: Petruschka.ch
-    url: "https://petruschka.ch"
+    url: https://petruschka.ch
     desc: Viva la Nonna
   - title: Suva.ch
-    url: "https://Suva.ch"
+    url: https://Suva.ch
     desc: Il Papa
