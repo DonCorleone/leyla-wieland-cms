@@ -66,7 +66,3 @@ collections:
           - { label: Name, name: name, widget: string }
           - { label: Author, name: author, widget: string }
           - { label: URL, name: url, widget: string }
-  - label: "Chart"
-    name: "doughnut"
-    folder: "src/chart"
-    create: true
