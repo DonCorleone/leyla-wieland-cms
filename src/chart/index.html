@@ -20,11 +20,11 @@ path: chart
   const ctx = document.getElementById("myChart");
   var dayOfBirth = new Date(2014, 0, 27);
   var thisYear = new Date().getFullYear();
-  var thisYearBirthday = new Date(thisYear, 0.27);
+  var thisYearBirthday = new Date(thisYear, 0, 27);
   var nextBirthDay =
     thisYearBirthday < new Date().getDate()
       ? thisYearBirthday
-      : new Date(thisYear + 1, 0.27);
+      : new Date(thisYear + 1, 0, 27);
   var msTillBirthDay = nextBirthDay - new Date();
   var daysTillBirthday = Math.round(msTillBirthDay / 1000 / 60 / 60 / 24);
   var daysSinceBirthday = 365 - daysTillBirthday;
