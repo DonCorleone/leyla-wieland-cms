@@ -5,9 +5,9 @@ links:
   - title: Früchteshop
     url: https://grocerycloud.netlify.app/
     desc: Früchteshop by Leyla and Neva
-  - title: Petruschka.ch
-    url: https://petruschka.ch
-    desc: Viva la Nonna
+  - title: Geburtstagsrechner
+    url: /chart/
+    desc: Wieviele Tage noch?
   - title: Suva.ch
     url: https://Suva.ch
     desc: Il Papa
