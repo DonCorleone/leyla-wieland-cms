@@ -18,13 +18,13 @@ path: chart
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
   const ctx = document.getElementById("myChart");
-  var dayOfBirth = Date.parse("2014-1-27");
+  var dayOfBirth = new Date(2014, 0, 27);
   var thisYear = new Date().getFullYear();
-  var thisYearBirthday = Date.parse(`${thisYear}-1-27`);
+  var thisYearBirthday = new Date(thisYear, 0.27);
   var nextBirthDay =
     thisYearBirthday < new Date().getDate()
       ? thisYearBirthday
-      : Date.parse(`${thisYear + 1}-1-27`);
+      : new Date(thisYear + 1, 0.27);
   var msTillBirthDay = nextBirthDay - new Date();
   var daysTillBirthday = Math.round(msTillBirthDay / 1000 / 60 / 60 / 24);
   var daysSinceBirthday = 365 - daysTillBirthday;
