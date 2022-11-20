@@ -1,0 +1,98 @@
+---
+layout: default
+title: Chart
+path: chart
+---
+
+<div class="flex flex-col justify-center">
+  <div class="w-80 sm:w-96 h-80 sm:h-96">
+    <canvas id="myChart"></canvas>
+  </div>
+  <div class="italic">
+    <div class="text-amber-300">
+      <strong>
+        <span>Tage bis zum Geburtstag: </span>
+        <span id="lblDaysTillBirthday"></span>
+      </strong>
+    </div>
+    <div>
+      <span>Geburtstag: </span>
+      <span id="lblDayOfBirth"></span>
+    </div>
+    <div>
+      <span>Aktuelles Jahr: </span>
+      <span id="lblThisYear"></span>
+    </div>
+    <div>
+      <span> Geburtstag dieses Jahr: </span>
+      <span id="lblThisYearBirthday"></span>
+    </div>
+    <div>
+      <span>Geburtstag nächstes Jahr: </span>
+      <span id="lblNextBirthday"></span>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById("myChart");
+  var dayOfBirth = Date.parse("2014-1-27");
+  var thisYear = new Date().getFullYear();
+  var thisYearBirthday = Date.parse(`${thisYear}-1-27`);
+  var nextBirthday =
+    thisYearBirthday < new Date().getDate()
+      ? thisYearBirthday
+      : Date.parse(`${thisYear + 1}-1-27`);
+  var msTillBirthDay = nextBirthday - new Date();
+  var daysTillBirthday = Math.round(msTillBirthDay / 1000 / 60 / 60 / 24);
+  var daysSinceBirthday = 365 - daysTillBirthday;
+  document.getElementById(
+    "lblDayOfBirth"
+  ).textContent = `${new Intl.DateTimeFormat("de-CH").format(
+    new Date(dayOfBirth)
+  )} (${dayOfBirth}ms seit UNIX)`;
+  document.getElementById("lblThisYear").textContent = thisYear;
+  document.getElementById(
+    "lblThisYearBirthday"
+  ).textContent = `${new Intl.DateTimeFormat("de-CH").format(
+    new Date(thisYearBirthday)
+  )} (${thisYearBirthday}ms seit UNIX)`;
+  document.getElementById(
+    "lblNextBirthday"
+  ).textContent = `${new Intl.DateTimeFormat("de-CH").format(
+    new Date(nextBirthday)
+  )} (${nextBirthday}ms seit UNIX)`;
+  document.getElementById("lblDaysTillBirthday").textContent = daysTillBirthday;
+  const plugin = {
+    id: "customCanvasBackgroundColor",
+    beforeDraw: (chart, args, options) => {
+      const { ctx } = chart;
+      ctx.save();
+      ctx.globalCompositeOperation = "destination-over";
+      ctx.fillStyle = options.color || "#99ffff";
+      ctx.fillRect(0, 0, chart.width, chart.height);
+      ctx.restore();
+    },
+  };
+  new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: ["Seit dem LETZTEN Geburtstag", "Bis zum NÄCHSTEN Geburtstag"],
+      datasets: [
+        {
+          data: [daysSinceBirthday, daysTillBirthday],
+          backgroundColor: ["#9d174d", "#86198f"],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        customCanvasBackgroundColor: {
+          color: "#fef3c7",
+        },
+      },
+    },
+    plugins: [plugin],
+  });
+</script>

@@ -1,0 +1,66 @@
+---
+layout: default
+title: Chart
+path: chart
+---
+
+<div class="flex flex-col items-center">
+  <div class="w-80 sm:w-96 h-80 sm:h-96">
+    <canvas id="myChart"></canvas>
+  </div>
+  <div class="text-amber-300">
+    <strong>
+      <span>Tage bis zum Geburtstag: </span>
+      <span id="lblDaysTillBirthday"></span>
+    </strong>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById("myChart");
+  var dayOfBirth = Date.parse("2014-1-27");
+  var thisYear = new Date().getFullYear();
+  var thisYearBirthday = Date.parse(`${thisYear}-1-27`);
+  var nextBirthDay =
+    thisYearBirthday < new Date().getDate()
+      ? thisYearBirthday
+      : Date.parse(`${thisYear + 1}-1-27`);
+  var msTillBirthDay = nextBirthDay - new Date();
+  var daysTillBirthday = Math.round(msTillBirthDay / 1000 / 60 / 60 / 24);
+  var daysSinceBirthday = 365 - daysTillBirthday;
+
+  document.getElementById("lblDaysTillBirthday").textContent = daysTillBirthday;
+
+  const plugin = {
+    id: "customCanvasBackgroundColor",
+    beforeDraw: (chart, args, options) => {
+      const { ctx } = chart;
+      ctx.save();
+      ctx.globalCompositeOperation = "destination-over";
+      ctx.fillStyle = options.color || "#99ffff";
+      ctx.fillRect(0, 0, chart.width, chart.height);
+      ctx.restore();
+    },
+  };
+  new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: ["Seit dem LETZTEN Geburtstag", "Bis zum NÄCHSTEN Geburtstag"],
+      datasets: [
+        {
+          data: [daysSinceBirthday, daysTillBirthday],
+          backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        customCanvasBackgroundColor: {
+          color: "#fef3c7",
+        },
+      },
+    },
+    plugins: [plugin],
+  });
+</script>
