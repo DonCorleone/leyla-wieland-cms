@@ -22,7 +22,7 @@ path: chart
   var thisYear = new Date().getFullYear();
   var thisYearBirthday = new Date(thisYear, 0, 27);
   var nextBirthDay =
-    thisYearBirthday < new Date().getDate()
+    thisYearBirthday > new Date().getDate()
       ? thisYearBirthday
       : new Date(thisYear + 1, 0, 27);
   var msTillBirthDay = nextBirthDay - new Date();
